@@ -1,19 +1,19 @@
-# 🎮 Jogo da Velha com Sockets em Python
+# Jogo da Velha com Sockets em Python
 
 Um projeto de jogo da velha (Tic Tac Toe) implementado em Python utilizando **sockets TCP/IP** para comunicação em rede entre dois jogadores remotos.
 
-## 📋 Descrição
+## Descrição
 
 Este projeto demonstra a implementação de uma aplicação cliente-servidor em Python, onde dois jogadores podem se conectar via rede e jogar uma partida de jogo da velha em tempo real. A comunicação entre os jogadores é feita através de **sockets TCP**, permitindo que os jogadores estejam em máquinas diferentes.
 
-## ✨ Características
+## Características
 
-- 🎯 **Comunicação em Rede**: Implementação usando sockets TCP/IP
-- 👥 **Multiplayer**: Suporta 2 jogadores conectados remotamente
-- 🔄 **Turnos Alternados**: Controle automático de turno entre jogadores
-- 📊 **Validação de Movimentos**: Verifica jogadas inválidas
-- 🏆 **Detecção de Vitória**: Identifica vencedor ou empate
-- 🖥️ **Interface no Terminal**: Interação simples via linha de comando
+- **Comunicação em Rede**: Implementação usando sockets TCP/IP
+- **Multiplayer**: Suporta 2 jogadores conectados remotamente
+- **Turnos Alternados**: Controle automático de turno entre jogadores
+- **Validação de Movimentos**: Verifica jogadas inválidas
+- **Detecção de Vitória**: Identifica vencedor ou empate
+- **Interface no Terminal**: Interação simples via linha de comando
 
 ## 🛠️ Requisitos
 
@@ -31,7 +31,7 @@ cd "Jogo Da Velha"
 
 2. Não há dependências externas para instalar. O projeto usa apenas módulos padrão do Python.
 
-## 🚀 Como Usar
+## Como Usar
 
 ### 1. Inicie o Servidor
 
@@ -77,7 +77,7 @@ Em um terceiro terminal, execute o mesmo comando do primeiro jogador. Quando doi
 
 - O jogo continua até que um jogador vença ou haja empate
 
-## 📐 Arquitetura
+##  Arquitetura
 
 ### Componentes Principais
 
@@ -96,45 +96,8 @@ O servidor gerencia:
 - **Validação**: Verifica jogadas válidas
 - **Sincronização**: Mantém ambos os clientes sincronizados com o estado do jogo
 
-## 🎮 Exemplo de Uso
 
-```bash
-# Terminal 1 - Servidor
-$ python jogo-da-velha.py server
-[Servidor iniciado] Aguardando conexões...
-[Cliente conectado] 127.0.0.1:54321
-[Cliente conectado] 127.0.0.1:54322
-[Jogo iniciado] Duas conexões estabelecidas
-
-# Terminal 2 - Jogador 1
-$ python jogo-da-velha.py client localhost 5000
-Conectado ao servidor
-Você é o jogador: X
-É a sua vez!
-Digite uma posição (1-9): 5
-   |   |   
------------
-   | X |   
------------
-   |   |   
-Aguardando o outro jogador...
-
-# Terminal 3 - Jogador 2
-$ python jogo-da-velha.py client localhost 5000
-Conectado ao servidor
-Você é o jogador: O
-Aguardando sua vez...
-É a sua vez!
-Digite uma posição (1-9): 1
- O |   |   
------------
-   | X |   
------------
-   |   |   
-Aguardando o outro jogador...
-```
-
-## 📝 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 Jogo Da Velha/
@@ -143,25 +106,7 @@ Jogo Da Velha/
 └── sockets.txt           # Informações adicionais sobre sockets
 ```
 
-## 🔐 Segurança
-
-- ⚠️ Este é um projeto educacional
-- Para uso em produção, considere adicionar:
-  - Autenticação de usuários
-  - Criptografia de comunicação (TLS/SSL)
-  - Tratamento robusto de exceções
-  - Validação de dados mais rigorosa
-
-## 🐛 Possíveis Erros
-
-| Erro | Solução |
-|------|---------|
-| `Connection refused` | Certifique-se de que o servidor está rodando |
-| `Address already in use` | Aguarde alguns segundos ou mude a porta |
-| `Connection reset by peer` | O outro jogador desconectou |
-| `Invalid move` | A posição já foi usada ou está fora do intervalo |
-
-## 📚 Conceitos Aprendidos
+## Conceitos Aprendidos
 
 - ✓ Programação com Sockets TCP/IP
 - ✓ Arquitetura Cliente-Servidor
@@ -172,27 +117,7 @@ Jogo Da Velha/
 
 ## 🎓 Contexto Acadêmico
 
-Este projeto foi desenvolvido como parte do curso de **Redes de Computadores II** da Universidade Federal de Roraima (UFRR).
-
-## 💡 Possíveis Melhorias
-
-- [ ] Interface gráfica (tkinter ou PyGame)
-- [ ] Suporte a mais de 2 jogadores
-- [ ] Sistema de ranking
-- [ ] Histórico de partidas
-- [ ] Criptografia de mensagens
-- [ ] Reconnection automática
-- [ ] Modo espectador
-
-## 📞 Contato
-
-**Autor**: Arthur Ramos  
-**GitHub**: [@ArthurRamos26](https://github.com/ArthurRamos26)  
-**Repositório**: [Sockets](https://github.com/ArthurRamos26/Sockets)
-
-## 📄 Licença
-
-Este projeto é de código aberto e está disponível para fins educacionais.
+Este projeto foi desenvolvido como parte do curso de **Redes de Computadores II** da Universidade Federal de Roraima (UFRR) no ano de 2025.
 
 ---
 
