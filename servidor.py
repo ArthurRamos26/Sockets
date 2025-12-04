@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 class ServidorJogoDaVelha:
     def __init__(self, porta=12111):
         self.porta = porta
-        self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)#afinet é para endereços IPV4 3 stream para tcp
         self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.server.bind(('', porta))
         self.server.listen(2)
@@ -19,7 +19,7 @@ class ServidorJogoDaVelha:
         self.lock = Lock()
         self.rodando = True
         
-        print(f"Servidor TCP iniciado na porta {porta}")
+        print(f"Servidor  iniciado na porta {porta}")
         print("Aguardando jogadores...")
         
         # Inicia thread de monitoramento de conexões
@@ -27,16 +27,16 @@ class ServidorJogoDaVelha:
     
     def monitorar_conexoes(self):
         """Monitora heartbeat dos jogadores e remove inativos"""
-        while self.rodando:
+        while self.rodando:#enquanto o servidor estiver rodando 
             time.sleep(5)
-            with self.lock:
+            with self.lock:#o lock serve para caso tente desconectar 1 jogador e 2 threads façam isso 
                 desconectados = []
                 agora = datetime.now()
                 
                 for conn, dados in list(self.jogadores.items()):
-                    # Se não recebeu ping há mais de 15 segundos, desconectar
+                    # Se não recebeu ping há mais de 15 segundos, desconecta
                     if agora - dados['ultimo_ping'] > timedelta(seconds=15):
-                        print(f"⚠ Jogador {dados['simbolo']} ({dados['endereco']}) desconectado por timeout")
+                        print(f" Jogador {dados['simbolo']} ({dados['endereco']}) desconectado por timeout")
                         desconectados.append(conn)
                 
                 for conn in desconectados:
@@ -55,7 +55,7 @@ class ServidorJogoDaVelha:
             
             print(f"✗ Jogador {simbolo} removido. Jogadores restantes: {len(self.jogadores)}")
             
-            # Se havia jogo ativo, finalizar
+            # Se havia jogo ativo, finaliza
             if self.jogo_ativo:
                 self.jogo_ativo = False
                 print(f"Jogo cancelado - jogador {simbolo} desconectou")
@@ -123,11 +123,12 @@ class ServidorJogoDaVelha:
     
     def processar_mensagem(self, mensagem, conn):
         """Processa mensagens recebidas dos clientes"""
+        # fica fazendo um ping pong entre servidor e cliente para ter certeza da conexao 
         try:
             tipo = mensagem.get('tipo')
             
             if tipo == 'PING':
-                with self.lock:
+                with self.lock: # ta lockando pois ja tem threads que mexem com jogadores 
                     if conn in self.jogadores:
                         self.jogadores[conn]['ultimo_ping'] = datetime.now()
                 return {'tipo': 'PONG'}
